@@ -8,8 +8,8 @@ class Park {
         this.arrayOfDinosaurs.push(dinosaurToAdd)
     }
     removeDinosaur(dinosaurToRemove){
-        const toRemove = this.arrayOfDinosaurs.indexOf(dinosaurToRemove)
-        this.arrayOfDinosaurs.slice(toRemove, 1)
+        const toRemove = this.arrayOfDinosaurs.indexOf(dinosaurToRemove);
+        this.arrayOfDinosaurs.splice(toRemove, 1);
     }
     mostPopularDinosaur(){
         let mostPopular = this.arrayOfDinosaurs[0]
@@ -23,7 +23,7 @@ class Park {
     findDinosaurBySpecies(speciesToFind){
         const arrayOfDinosaursBySpecies = []
         for (let i = 0; i < this.arrayOfDinosaurs.length; i++){
-            if (this.arrayOfDinosaurs[i].species === speciesToFind.species){
+            if (this.arrayOfDinosaurs[i].species === speciesToFind){
                 arrayOfDinosaursBySpecies.push(this.arrayOfDinosaurs[i])
             }
         }
@@ -42,15 +42,11 @@ class Park {
     totalRevenueFromTicketsYearly(){
         return (this.totalNumberOfVisitorsPerYear() * this.ticketPrice)
     }
-    removeAllDinosaursBySpecies(speciesToRemove){
-        const dinosaursToDelete = []
-        for ( let i = 0; i < this.arrayOfDinosaurs.length; i++){
-            if (this.arrayOfDinosaurs[i].species === speciesToRemove){
-                dinosaursToDelete.push(this.arrayOfDinosaurs[i])
+    removeAllDinosaursBySpecies(speciesToRemove) {
+        for (let i = this.arrayOfDinosaurs.length - 1; i >= 0; i--) {
+            if (this.arrayOfDinosaurs[i].species === speciesToRemove) {
+                this.arrayOfDinosaurs.splice(i, 1);
             }
-        }
-        for ( let i = 0; i < dinosaursToDelete.length; i++){
-            this.arrayOfDinosaurs.splice(dinosaursToDelete[i], 1)
         }
     }
     sortDinosaursByDiet(){
